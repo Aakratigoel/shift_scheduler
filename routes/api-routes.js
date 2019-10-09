@@ -60,13 +60,14 @@ var passport = require("../config/passport");
               });
   });
 
-  router.post("/api/employeeLogin", passport.authenticate('local'),function(req,res){
-    console.log(req.body);
-    if (req.user) {
-        console.log("success login");
-      res.redirect("/shifts");
-    }
-         console.log("not logged in");
+  // app.post('/login', passport.authenticate('local', { failureRedirect: '/login' }),
+  // function(req, res) {
+  //   res.redirect('/');
+  // });
+
+  router.post("/api/employeeLogin", passport.authenticate("local"),function(req,res){
+   
+   res.json("/shifts");
   });
 
   

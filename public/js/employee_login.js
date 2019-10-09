@@ -4,12 +4,13 @@ $(document).ready(function()
     {
         event.preventDefault();
         var empLogin = {
-            Emp_Email: $("#empEmail").val().trim(),
-            Emp_password:$("#empPassword").val()
+            email: $("#empEmail").val().trim(),
+            password:$("#empPassword").val()
         }
         console.log("before the post method");
-        $.post("/api/employeeLogin",empLogin.Emp_Email,empLogin.Emp_password).then(function()
+        $.post("/api/employeeLogin",empLogin).then(function(data)
         {
+            console.log(data);
             console.log("success");
         })
         

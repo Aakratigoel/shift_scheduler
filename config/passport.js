@@ -1,4 +1,5 @@
 //we import passport packages required for authentication
+
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 //
@@ -15,12 +16,14 @@ passport.use(new LocalStrategy(
   function(email, password, done) {
     // When a user tries to sign in this code runs
     console.log("email"+email);
+    console.log("password"+password);
     db.Employee.findOne({
       where: {
         Emp_Email: email
       }
     }).then(function(dbUser) {
       // If there's no user with the given email
+      console.log("db user",dbUser);
       if (!dbUser) {
         return done(null, false, {
           message: "Incorrect email."
@@ -34,7 +37,8 @@ passport.use(new LocalStrategy(
         }
         // If none of the above, return the user
         return done(null, dbUser);
-      });
+      })
+      
     }
   ));
   //
@@ -46,6 +50,7 @@ passport.use(new LocalStrategy(
   });
   //
   passport.deserializeUser(function(obj, cb) {
+    console.log(obj);
     cb(null, obj);
   });
   //
