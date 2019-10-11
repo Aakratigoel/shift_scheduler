@@ -29,9 +29,11 @@ router.get("/employeeLogin", function(req, res) {
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be 
   //redirected to the signup page
-  router.get("/shifts", isAuthenticated, function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/employee.html"));
+  router.get("/shifts", function(req, res) {
+    console.log('rendering shifts')
+    res.sendFile(path.join(__dirname, "../public/shifts.html"));
   });
+
   router.get("/logout", function(req, res) {
     req.logout();
     res.redirect("/");

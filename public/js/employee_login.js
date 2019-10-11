@@ -1,5 +1,10 @@
 $(document).ready(function()
 {
+    $("#suButton").on("click",function(even)
+    {
+        event.preventDefault();
+        window.open("employee.html","_self");
+    })
     $("#loginForm").on("submit",function(event)
     {
         event.preventDefault();
@@ -8,11 +13,10 @@ $(document).ready(function()
             password:$("#empPassword").val()
         }
         console.log("before the post method");
-        $.post("/api/employeeLogin",empLogin).then(function(data)
+        $.post("/api/employeeLogin", empLogin).then(function(data)
         {
-            console.log(data);
-            console.log("success");
-        })
+            window.open("/shifts","_self");
+        });
         
     });
 })

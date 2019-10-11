@@ -51,8 +51,9 @@ module.exports = function(sequelize, DataTypes) {
     };
     Employee.addHook("beforeCreate",function(user)
     {
-        console.log("User password" + user.password,user.Emp_password);
-        user.password = bcrypt.hashSync(user.password,bcrypt.genSaltSync(10),null);
+        console.log("HASHING PASSWORD: ", user.password,user.Emp_password);
+        user.Emp_password = bcrypt.hashSync(user.Emp_password, bcrypt.genSaltSync(10),null);
+        console.log('HASHED PASSWORD: ', user.Emp_password);
     });
     return Employee;
   };

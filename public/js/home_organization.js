@@ -1,6 +1,17 @@
 $(document).ready(function()
 {
     $("#alertDiv").hide();
+    $("#alertDiv2").hide();
+    $("#empRegister").on("click",function(event)
+    {
+        event.preventDefault();
+        window.open("employee.html","_self");
+    })
+    $("#empLogin").on("click",function(event)
+    {
+        event.preventDefault();
+        window.open("employee_login.html","_self");
+    })
     $("#organizationForm").on("submit",function(event)
     {
         event.preventDefault();
@@ -9,10 +20,18 @@ $(document).ready(function()
     }
     $.post("/api/organization", newOrganization)
     // On success, run the following code
-    .then(function() {
-        console.log("Success");
-        $("#alertDiv").show();
-        setTimeout(function(){ location.reload(); }, 3000);
+    .then(function(data) {
+        if(data === "Already Exists")
+        {
+            $("#alertDiv2").css("display","block");
+            setTimeout(function(){ location.reload(); },1500);
+        }
+        else{
+            console.log("Success");
+            $("#alertDiv").css("display","block");
+            setTimeout(function(){ location.reload(); },1500);
+        }
+      
     })
 });
 })

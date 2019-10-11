@@ -11,6 +11,7 @@ var express = require("express");
 var router = express.Router();
 var db = require("../models");
 var passport = require("../config/passport");
+var organizationList ;
 // Routes
 // =============================================================
 
@@ -18,7 +19,11 @@ var passport = require("../config/passport");
   // GET route for getting all of the todos
   router.get("/api/employee", function(req, res) {
     db.Organization.findAll().then(function(dbOrganization) {
+      
+      organizationList=JSON.stringify(dbOrganization);
+      console.log(organizationList);
       res.json(dbOrganization);
+    
     });
   });
 
@@ -36,12 +41,25 @@ var passport = require("../config/passport");
 //   });
   router.post("/api/organization", function(req, res) {
     console.log(req.body);
-    db.Organization.create({
-              name: req.body.name,
-            })
-              .then(function(dbOrganization) {
-                res.json(dbOrganization);
-              });
+      db.Organization.findOrCreate({
+        where: {
+          name: req.body.name
+        }
+      })
+        .then(function(dbOrganization) {
+          console.log(dbOrganization[1]);
+         if(dbOrganization[1])
+         {
+           res.json(dbOrganization);
+         }
+         else
+         {
+           res.json("Already Exists");
+         }
+          
+         
+        });
+   
   });
 
   router.post("/api/employee", function(req, res) {
@@ -66,8 +84,8 @@ var passport = require("../config/passport");
   // });
 
   router.post("/api/employeeLogin", passport.authenticate("local"),function(req,res){
-   
-   res.json("/shifts");
+    console.log('REDIRECTING ')
+   res.redirect("/shifts");
   });
 
   

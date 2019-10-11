@@ -1,5 +1,6 @@
 $(document).ready(function()
 {
+    $("#alertDiv").hide();
     var organizaitons;
     $.get("/api/employee", function(data) {
         console.log("Organization : ", data);
@@ -8,6 +9,11 @@ $(document).ready(function()
         $.each(data, function() {
         $dropdown.append($("<option />").val(this.name).text(this.name));
         });
+      })
+      $("#loginButton").on("click",function(event)
+      {
+            event.preventDefault();
+            window.open("employee_login.html","_self");
       })
     $("#employeeForm").on("submit",function(event)
     {
@@ -22,9 +28,13 @@ $(document).ready(function()
             Emp_password:$("#empPassword").val()
         }
         console.log(newEmployee);
-        $.post("/api/employee",newEmployee).then(function()
+        $.post("/api/employee",newEmployee)
+        .then(function()
         {
             console.log("success");
+            $("#alertDiv").show();
+            // setTimeout(function(){ window.open("employee_login.html","_self") }, 1000);
+
         })
         
     });

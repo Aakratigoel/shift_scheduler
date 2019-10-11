@@ -1,41 +1,97 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src = "js/employee.js"></script>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  <body>
-      
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <form id = "employeeForm">
-        <label>Employee_Name</label>
-        <input id = "empName"type = "text"/>
-        <label>Email</label>
-        <input id="empEmail" type = "email"/>
-        <label>Organization</label>
-        <select id="dropdownOrganizations">
-                   
-        </select>
-        <label>Working_Days</label>
-        <input id = "empWD" type = "text"/>
-        <label>Shift_Timings(Start Time)</label>
-        <input id="empTimeStart" type = "time"/> 
-        <label>Shift_Timings(End Time)</label>
-        <input id="empTimeEnd" type = "time"/> 
-        <label>Password</label>
-        <input id="empPassword" type = "password"/> 
-        <button type = "submit">Register</button>
-    </form>
-    
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="js/employee.js"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body style="background:grey">
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <div class="container-fluid">
+    <div class="row" style="height:50px">
+        <div id="alertDiv" class="alert alert-success alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            You are successfully registered
+          </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3">
+         
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header text-center" style="height:70px;">
+            <img src="images/sslogo2.jpeg" width="50px" height="50px">
+            <h1 class="navbar-brand" style="color:black;font-family:Catamaran;font-weight: bold;font-size:25px;">Shift Scheduler </h2>
+          </div>
+          <div class="card-body">
+            <div class="card-title text-center" style="color: grey;font-size:20px;font-family: 'Times New Roman', Times, serif;">Welcome to Shift Scheduler</div>
+            <div class="card-text"style="padding-left:200px;padding-right:200px;">
+              <form id="employeeForm">
+                <label style="font-size:12px;color:black">FULL NAME</label><br>
+                <input id="empName" type="text"style="width:300px;height:40px;" required/><br>
+                <div style="height:10px;"></div>
+                <label style="font-size:12px;color:black">EMAIL</label><br>
+                <input id="empEmail" type="email" style="width:300px;height:40px;" required/><br>
+                <div style="height:10px;"></div>
+                <label style="font-size:12px;color:black">ORGANIZATION</label><br>
+                <select id="dropdownOrganizations" style="width:300px;height:40px;" required>
+  
+                </select><br>
+                <div style="height:10px;"></div>
+                <label style="font-size:12px;color:black">WORKING_DAYS</label><br>
+                <input id="empWD" type="text" style="width:300px;height:40px;" required/><br>
+                <div style="height:10px;"></div>
+                <label style="font-size:12px;color:black">SHIFT_TIMINGS(START TIME )</label><br>
+                <input id="empTimeStart" type="time" style="width:300px;height:40px;" required/> <br>
+                <div style="height:10px;"></div>
+                <label style="font-size:12px;color:black">SHIFT_TIMINGS(END TIME)</label><br>
+                <input id="empTimeEnd" type="time" style="width:300px;height:40px;" required/> <br>
+                <div style="height:10px;"></div>
+                <label style="font-size:12px;color:black">PASSWORD</label><br>
+                <input id="empPassword" type="password" style="width:300px;height:40px;" required/> <br>
+                <div style="height:20px;"></div>
+                <button type="submit" style="width:300px;height:40px;background:green;color:white;">SIGN UP</button>
+              </form>
+            </div>
+           <hr>
+           <div class="card-text text-center">
+            <div style="font-size: 15px;color:grey">Already have an account?</div>
+            <div class="row" style="height:20px;"></div>
+            <button id="loginButton"type="submit" style="width:300px;height:40px;background:green;color:white;text-align: center;position: relative;left:25px;">LOG IN</button>
+          
+          </div>
+           
+          </div>
+         
+        </div>
+      </div>
+      <div class="col-lg-3">
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

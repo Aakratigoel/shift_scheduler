@@ -35,6 +35,7 @@ passport.use(new LocalStrategy(
             message: "Incorrect password."
           });
         }
+        console.log('VALID USER')
         // If none of the above, return the user
         return done(null, dbUser);
       })

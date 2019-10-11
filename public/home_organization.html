@@ -28,10 +28,9 @@
                      <img src="images/sslogo2.jpeg" width="70px" height="70px">
                 <h1 class="navbar-brand" style="color:black;font-family:Catamaran;font-weight: bold;font-size:30px;">Shift Scheduler </h2>
             </div>
-            <div id="alertDiv" class="alert alert-success alert-dismissible">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                You are successfully registered
-              </div>
+            <button value="Employee Register" id="empRegister" style="background: green;position: relative;left:350px;height: 50px;color:white;font-family: 'Times New Roman', Times, serif;font-size:18px">Employee Register<span style='font-size:15px;'>&#8594;</span></button>
+            <button value="Employee Login" id="empLogin" style="background: green;height: 50px;color:white;font-family: 'Times New Roman', Times, serif;font-size:18px">Employee Login<span style='font-size:15px;'>&#8594;</span></button>
+           
             <!-- <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="employee.html" style="color:white;text-align: center">Register Employee</a></li>
@@ -46,7 +45,16 @@
          <div style="display: block;background:rgba(0,0,0,0.1);height: 500px;width:500px;border:2px inset;padding:20px">
           <h4 style="font-family: 'Courier New', Courier, monospace;color:green;"><span style='font-size:20px;'>&#10004;</span><span> </span><span style="font-weight: bold">FREE</span> ONLINE SCHEDULER</h4>
           <h4 style="font-family: 'Courier New', Courier, monospace;color:green;"><span style='font-size:20px;'>&#10004;</span><span> </span><span style="font-weight: bold">FREE</span> CUSTOMER SUPPORT</h4>  
-          <div class="row" style="height: 50px"></div>
+          <div class="row" style="height: 50px">
+              <div id="alertDiv" class="alert alert-success alert-dismissible" style="display: none;">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  You are successfully registered
+                </div>
+                <div id="alertDiv2" class="alert alert-danger alert-dismissible" style="display:none;">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  Already Registered !!
+                </div>
+          </div>
           <h3 style="font-family: 'Times New Roman', Times, serif;text-align: center;color:grey">Register your organization now!!!</h3>
           <form id="organizationForm" style="text-align: center">
                 <input id="orgName" type = "text" placeholder="Organization_Name" style="text-align: center;height:70px;width:300px">
