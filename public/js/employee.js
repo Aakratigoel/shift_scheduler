@@ -32,8 +32,8 @@ $(document).ready(function()
         .then(function()
         {
             console.log("success");
-            $("#alertDiv").show();
-            // setTimeout(function(){ window.open("employee_login.html","_self") }, 1000);
+             $("#alertDiv").show();
+             setTimeout(function(){ window.open("/employeeLogin","_self") }, 1000);
 
         })
         

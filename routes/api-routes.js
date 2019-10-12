@@ -26,6 +26,24 @@ var organizationList ;
     
     });
   });
+  // // router.get("/api/employee_profile",function(req, res) {
+  // //   db.Employee.findAll().then(function(dbEmployee) {
+  // //     employee=JSON.stringify(dbEmployee);
+  // //     console.log(employee);
+  // //     res.json(dbEmployee);
+  // //   });
+  // });
+
+  router.get("/api/employee_profile", (req, res) => {
+    if (req.user === undefined || req.user === null || !req.user) {
+        // The user is not logged in
+        res.json({});
+    } else {
+        res.json({
+            user: req.user
+        });
+    }
+});
 
   // POST route for saving a new organization. We can create a organization using the data on req.body
 //   app.post("/api/posts", function(req, res) {
@@ -84,11 +102,11 @@ var organizationList ;
   // });
 
   router.post("/api/employeeLogin", passport.authenticate("local"),function(req,res){
-    console.log('REDIRECTING ')
-   res.redirect("/shifts");
+    console.log('REDIRECTING ');
+    res.json(req.body.email);
   });
 
-  
+ 
   // DELETE route for deleting todos. We can access the ID of the todo to delete in
   // req.params.id
 //   router.delete("/api/todos/:id", function(req, res) {

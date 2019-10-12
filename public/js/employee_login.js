@@ -15,7 +15,7 @@ $(document).ready(function()
         console.log("before the post method");
         $.post("/api/employeeLogin", empLogin).then(function(data)
         {
-            window.open("/shifts","_self");
+            window.open("/employee_profile","_self");
         });
         
     });
