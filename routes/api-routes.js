@@ -12,6 +12,7 @@ var router = express.Router();
 var db = require("../models");
 var passport = require("../config/passport");
 var organizationList ;
+var shiftList;
 // Routes
 // =============================================================
 
@@ -34,7 +35,7 @@ var organizationList ;
   // //   });
   // });
 
-  router.get("/api/employee_profile", (req, res) => {
+  router.get("/api/employee_profile", function(req,res) {
     if (req.user === undefined || req.user === null || !req.user) {
         // The user is not logged in
         res.json({});
@@ -45,6 +46,23 @@ var organizationList ;
     }
 });
 
+router.get("/api/shift_request", function(req,res) {
+  if (req.user === undefined || req.user === null || !req.user) {
+    // The user is not logged in
+    res.json({});
+} else {
+  db.Shift.findAll({
+    where :{
+      Emp_Organization:req.user.Emp_Organization
+    }
+  }).then(function(dbShift) {
+    console.log("In api routes",dbShift);
+    res.json(dbShift);
+  
+  });
+}
+  
+});
   // POST route for saving a new organization. We can create a organization using the data on req.body
 //   app.post("/api/posts", function(req, res) {
 //     console.log(req.body);
@@ -106,7 +124,21 @@ var organizationList ;
     res.json(req.body.email);
   });
 
- 
+ router.post("/api/employee_profile",function(req,res){
+  console.log(req.body);
+  db.Shift.create({
+            Emp_id:req.body.Emp_id,
+            Emp_Name: req.body.Emp_Name,
+            Emp_Email:req.body.Emp_Email,
+            Emp_Organization:req.body.Emp_Organization,
+            Emp_Request_shift_time_start:req.body.Shift_Request_Start_Time,
+            Emp_Request_shift_time_end:req.body. Shift_Request_End_Time,
+            Emp_Request_Status:req.body.Shift_Status
+          })
+            .then(function(dbShift) {
+              res.json(dbShift);
+            });
+ })
   // DELETE route for deleting todos. We can access the ID of the todo to delete in
   // req.params.id
 //   router.delete("/api/todos/:id", function(req, res) {
