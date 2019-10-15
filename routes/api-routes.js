@@ -57,7 +57,10 @@ router.get("/api/shift_request", function(req,res) {
     }
   }).then(function(dbShift) {
     console.log("In api routes",dbShift);
-    res.json(dbShift);
+    res.json({
+      s:dbShift,
+      ru:req.user
+    });
   
   });
 }
@@ -133,11 +136,29 @@ router.get("/api/shift_request", function(req,res) {
             Emp_Organization:req.body.Emp_Organization,
             Emp_Request_shift_time_start:req.body.Shift_Request_Start_Time,
             Emp_Request_shift_time_end:req.body. Shift_Request_End_Time,
-            Emp_Request_Status:req.body.Shift_Status
+            Emp_Request_Status:req.body.Shift_Status,
+            Emp_AcceptedByEmail:req.body.AcceptedByEmail,
+            Emp_AcceptedByName:req.body.AcceptedByName
           })
             .then(function(dbShift) {
               res.json(dbShift);
             });
+ })
+
+
+ router.put("/api/shiftRequest",function(req,res)
+ {
+   console.log(req.body);
+  db.Shift.update(
+    {Emp_Request_Status: "Accepted",
+    Emp_AcceptedByEmail:req.body.rabe,
+    Emp_AcceptedByName:req.body.rabn
+  },
+    {where: {Emp_Email:req.body.em}}
+  )
+  .then(function(rowsUpdated) {
+    res.json(rowsUpdated)
+  })
  })
   // DELETE route for deleting todos. We can access the ID of the todo to delete in
   // req.params.id

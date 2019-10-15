@@ -40,6 +40,14 @@ module.exports = function(sequelize, DataTypes) {
               len: [1]
             }
         },
+        Emp_AcceptedByEmail:
+        {
+          type: DataTypes.STRING,
+        },
+        Emp_AcceptedByName:
+        {
+          type: DataTypes.STRING,
+        },
     }
     );
     return Shift;

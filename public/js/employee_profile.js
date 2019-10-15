@@ -40,14 +40,18 @@ $(document).ready(function()
             Emp_Organization:$("#id_3").text(),
             Shift_Request_Start_Time:$("#sst").val(),
             Shift_Request_End_Time:$("#set").val(),
-            Shift_Status:"Pending"
+            Shift_Status:"Pending",
+            AcceptedByEmail:"",
+            AcceptedByName:""
         }
         console.log("Shift Request:", shiftRequest);
         $.post("/api/employee_profile",shiftRequest)
-        .then(function()
+        .then(function(data)
         {
             console.log("success");
-
+            console.log(data);
+            console.log(data.Emp_Request_Status)
+           $("#shiftStatus").append(data.Emp_Request_Status);
         })
       })
 
