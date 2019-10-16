@@ -29,11 +29,20 @@ $(document).ready(function()
         }
         console.log(newEmployee);
         $.post("/api/employee",newEmployee)
-        .then(function()
+        .then(function(data)
         {
-            console.log("success");
-             $("#alertDiv").show();
-             setTimeout(function(){ window.open("/employeeLogin","_self") }, 1000);
+            if(data ==="Already Exists")
+            {
+                console.log("Already Exists");
+                $("#alertDiv2").css("display","block");
+                setTimeout(function(){ location.reload(); },1000);
+            }
+            else{
+                console.log("success");
+                $("#alertDiv").show();
+                setTimeout(function(){ window.open("/employeeLogin","_self") }, 1000);
+            }
+            
 
         })
         

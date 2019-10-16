@@ -103,17 +103,30 @@ router.get("/api/shift_request", function(req,res) {
 
   router.post("/api/employee", function(req, res) {
     console.log(req.body);
-    db.Employee.create({
-              Emp_Name: req.body.Emp_Name,
-              Emp_Email:req.body.Emp_Email,
-              Emp_Organization:req.body.Emp_Organization,
-              Emp_NumberOfWorkingDays:req.body.Emp_NumberOfWorkingDays,
-              Emp_shift_time_start:req.body.Emp_shift_time_start,
-              Emp_shift_time_end:req.body.Emp_shift_time_end,
-              Emp_password:req.body.Emp_password
-            })
+    db.Employee.findOrCreate({
+      where:
+      {
+        Emp_Email:req.body.Emp_Email,
+      },
+      defaults :
+      {
+        Emp_Name: req.body.Emp_Name,
+        Emp_Organization:req.body.Emp_Organization,
+        Emp_NumberOfWorkingDays:req.body.Emp_NumberOfWorkingDays,
+        Emp_shift_time_start:req.body.Emp_shift_time_start,
+        Emp_shift_time_end:req.body.Emp_shift_time_end,
+        Emp_password:req.body.Emp_password
+      }})
               .then(function(dbEmployee) {
-                res.json(dbEmployee);
+                console.log(dbEmployee[1]);
+         if(dbEmployee[1])
+         {
+           res.json(dbEmployee);
+         }
+         else
+         {
+           res.json("Already Exists");
+         }
               });
   });
 
