@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://code.jquery.com/jquery.js"></script>
+    <script src = "https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src = "js/employee_login.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -13,7 +14,15 @@
   <body style="background:grey">
       <div class="container-fluid">
           <div class="row" style="height:150px">
-      
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4" style="height: 50px;text-align:center">
+              <div id="alertDiv" class="alert alert-danger alert-dismissible" style="display: none;">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+               Invalid Login,Please Try Again
+              </div>
+            </div>
+            <div class="col-lg-4"></div>
+            
           </div>
           <div class="row">
             <div class="col-lg-3">

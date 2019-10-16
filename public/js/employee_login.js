@@ -15,8 +15,13 @@ $(document).ready(function()
         console.log("before the post method");
         $.post("/api/employeeLogin", empLogin).then(function(data)
         {
-            window.open("/employee_profile","_self");
-        });
+                window.open("/employee_profile","_self");
+        }).catch(function(err) {
+            // Give the User feedback here
+            $("#alertDiv").css("display","block");
+            setTimeout(function(){ location.reload(); },1500);
+            console.log(err);
+          });
         
     });
 })
