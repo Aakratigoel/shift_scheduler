@@ -26,7 +26,14 @@ $(document).ready(function(){
                 
             
         }  
+        if(data.s[j].Emp_Request_Status === "Accepted")
+        {
+          $tableDataRow.append(`<input class="acceptRequest btn btn-primary" type="submit" value="Accept" disabled data-email="${data.s[j][keys[3]]}">`); 
+        }
+       else
+       {
         $tableDataRow.append(`<input class="acceptRequest btn btn-primary" type="submit" value="Accept" data-email="${data.s[j][keys[3]]}">`); 
+       }
         $tableDataRow.append("<br>");
         $table.append($tableDataRow);
         
@@ -51,5 +58,13 @@ $(document).ready(function(){
         })
     
 
+      })
+      $("#logOut").on("click",function(event)
+      {
+        event.preventDefault();
+        $.get("/logout",function(data)
+        {
+          window.open("/","_self");
+        })
       })
 })

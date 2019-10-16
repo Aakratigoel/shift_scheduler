@@ -38,7 +38,7 @@ router.get("/employeeLogin", function(req, res) {
     req.logout();
     res.redirect("/");
   });
-  router.get("/shiftRequest", function(req, res) {
+  router.get("/shiftRequest", isAuthenticated,function(req, res) {
     res.sendFile(path.join(__dirname,"../public/shiftRequest.html"));
   });
 module.exports = router;

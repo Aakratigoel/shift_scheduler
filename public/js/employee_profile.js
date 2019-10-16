@@ -48,10 +48,12 @@ $(document).ready(function()
         $.post("/api/employee_profile",shiftRequest)
         .then(function(data)
         {
+
             console.log("success");
             console.log(data);
-            console.log(data.Emp_Request_Status)
-           $("#shiftStatus").append(data.Emp_Request_Status);
+            $("#alertDiv").css("display","block");
+            setTimeout(function(){ location.reload(); },1500);
+
         })
       })
 
@@ -60,7 +62,14 @@ $(document).ready(function()
         event.preventDefault();
         window.open("/shiftRequest","_self");
       })
-
+      $("#logOut").on("click",function(event)
+      {
+        event.preventDefault();
+        $.get("/logout",function(data)
+        {
+          window.open("/","_self");
+        })
+      })
 
 
      

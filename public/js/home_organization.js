@@ -5,12 +5,12 @@ $(document).ready(function()
     $("#empRegister").on("click",function(event)
     {
         event.preventDefault();
-        window.open("employee.html","_self");
+        window.open("/employee","_self");
     })
     $("#empLogin").on("click",function(event)
     {
         event.preventDefault();
-        window.open("employee_login.html","_self");
+        window.open("/employeeLogin","_self");
     })
     $("#organizationForm").on("submit",function(event)
     {
